@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import {Cinzel, Crimson_Pro } from "next/font/google";
-import "./globals.css";
 import NavBar from "@/components/navbar";
+import "./globals.css";
 
 const cinzel = Cinzel({
   variable: "--font-cinzel",
@@ -15,8 +15,8 @@ const crimsonPro = Crimson_Pro({
 });
 
 export const metadata: Metadata = {
-  title: "Class Minaret",
-  description: "A platform for freelance substitute teachers to display their acheivements and be recruited by schools.",
+  title: "Sub Hive",
+  description: "A freelance platform for substitute teachers to showcase their experience and connect with islamic organizations",
 };
 
 export default function RootLayout({

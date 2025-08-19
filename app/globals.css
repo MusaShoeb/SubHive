@@ -13,10 +13,11 @@
 
 
 body {
-  background: url("/gridlines-red.png") no-repeat center center fixed;
+  background: url("/gridlines-original.png") no-repeat center center fixed;
   font-family: var(--font-crimson-pro), sans-serif;
 }
 
 .title {
   font-family: var(--font-cinzel), serif;
 }
+
