@@ -1,26 +1,22 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --dark-maroon: #79410C;
+  --burnt-orange: #BA7425;
+  --honey: #F0D88C;
+  --lake-green: #57B28C;
+  --forest-green: #3A7E61;
+
+  --text-gradient: linear-gradient(90deg, var(--dark-maroon) 0%, var(--burnt-orange) 100%);
+
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: url("/gridlines-red.png") no-repeat center center fixed;
+  font-family: var(--font-crimson-pro), sans-serif;
+}
+
+.title {
+  font-family: var(--font-cinzel), serif;
 }
