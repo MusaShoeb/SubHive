@@ -13,7 +13,8 @@
 
 
 body {
-  background: url("/gridlines-original.png") no-repeat center center fixed;
+  background: url("/gridlines-honey.png") no-repeat center center fixed;
+  background-size: cover;
   font-family: var(--font-crimson-pro), sans-serif;
 }
 
