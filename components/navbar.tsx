@@ -1,12 +1,13 @@
 "use client"
 
 import { supabase } from "@/supabase/client-supabase"
+import { User } from "@supabase/supabase-js";
 import Link from "next/link"
 import { useEffect, useState } from "react"
 
 export default function NavBar() {
 
-  const [user, setUser] = useState<any>(null)
+  const [user, setUser] = useState<User | null>(null);
 
   const checkUser = async () => {
       const { data, error } = await supabase.auth.getUser()
