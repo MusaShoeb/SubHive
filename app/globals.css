@@ -7,8 +7,19 @@
   --lake-green: #57B28C;
   --forest-green: #3A7E61;
 
-  --text-gradient: linear-gradient(90deg, var(--dark-maroon) 0%, var(--burnt-orange) 100%);
+  --background-gradient: linear-gradient(90deg, var(--dark-maroon), var(--burnt-orange));
+}
 
+.gradient-text {
+  background: var(--background-gradient);
+  -webkit-background-clip: text; 
+  background-clip: text;
+  -webkit-text-fill-color: transparent; 
+ }
+
+
+html, body {
+  overflow-x: hidden;
 }
 
 

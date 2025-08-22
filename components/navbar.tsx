@@ -4,6 +4,7 @@ import { supabase } from "@/supabase/client-supabase"
 import { User } from "@supabase/supabase-js"
 import Link from "next/link"
 import { useEffect, useState } from "react"
+import { motion } from "motion/react"
 
 export default function NavBar() {
 
@@ -38,12 +39,17 @@ export default function NavBar() {
   }, [])
 
   return (
-    <div className="flex m-10">
-      <div className="title text-lg">Sub Hive</div>
+    <div className={`flex items-center m-5 ${!user ? 'justify-between' : 'justify-evenly'}`}>
+      <div className="title gradient-text font-medium text-[30px] ">Sub Hive</div>
 
-      <div>
+      <div className="flex">
         {!user ? (
-          <Link href="/login">Get Started</Link>
+          <motion.div
+            whileHover={{backgroundColor: "var(--dark-maroon)"}}
+            transition={{duration: .5}}
+            className = "group rounded-xl border-2 border-[var(--dark-maroon)] flex justify-center items-center w-[120px] h-[40px] p-[5px]">
+               <Link href = "/auth" className="group-hover:text-white text-[var(--dark-maroon)]">Get Started</Link>
+          </motion.div>
         ) : (
            <div>
             <nav className="text-[var(--text-gradient)] text-md mx-5">
