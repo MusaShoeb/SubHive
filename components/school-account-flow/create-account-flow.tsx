@@ -36,7 +36,7 @@ export default function CreateAccountsteps () {
 
     const fullsteps = [
        <SelectAccount key = "step1" Next={incrementSteps}/>,
-       <BuildSchoolProfile></BuildSchoolProfile>,
+       <BuildSchoolProfile key = "step3"></BuildSchoolProfile>,
        <AccountForm key = "step2" Next={incrementSteps} Previous={decrementsteps}/>
     ]
     return (

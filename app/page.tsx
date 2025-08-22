@@ -1,7 +1,6 @@
 "use client";
 
 import LineAnimation from "@/data/animations";
-import { easeInOut, motion } from "motion/react"
 
 export default function HomePage () {
   return (
