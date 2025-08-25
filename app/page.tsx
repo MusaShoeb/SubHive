@@ -83,8 +83,9 @@ export default function HomePage () {
            <motion.div
           className="flex justify-around rounded-lg border-4 border-[var(--honey)] w-[300px] h-[80px] my-5"
           initial = {{y:0}}
-          animate = {{y: [40, -40, 40]}} 
+          whileInView = {{y: 100}}
           transition = {{ duration: 3, ease: easeInOut}}
+          viewport={{once: false, amount: 1}}
           >
           <Image
             src = '/user-icon-yellow.png'
@@ -102,9 +103,10 @@ export default function HomePage () {
 
         <motion.div
           className="flex justify-around rounded-lg border-4 border-[var(--burnt-orange)] w-[300px] h-[80px] my-5"
-           initial = {{y:0}}
-          animate = {{y: [40, -40, 40]}} 
+          initial = {{y:0}}
+          whileInView = {{y: 100}}
           transition = {{ duration: 3, ease: easeInOut}}
+          viewport={{once: false, amount: 1}}
           >
           <Image
             src = '/user-icon-orange.png'
@@ -123,8 +125,9 @@ export default function HomePage () {
         <motion.div
           className="flex justify-around rounded-lg border-4 border-[var(--dark-maroon)] w-[300px] h-[80px] my-5"
           initial = {{y:0}}
-          animate = {{y: [40, -40, 40]}}
+          whileInView = {{y: 100}}
           transition = {{ duration: 3, ease: easeInOut}}
+          viewport={{once: false, amount: 1}}
           >
           <Image
             src = '/user-icon-red.png'
