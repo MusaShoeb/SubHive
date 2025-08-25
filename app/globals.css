@@ -29,6 +29,10 @@ body {
   font-family: var(--font-crimson-pro), sans-serif;
 }
 
+.component-box {
+  background: var(--background-gradient);
+}
+
 .title {
   font-family: var(--font-cinzel), serif;
 }

@@ -40,7 +40,7 @@ export default function NavBar() {
 
   return (
     <div className={`flex items-center m-5 ${!user ? 'justify-between' : 'justify-evenly'}`}>
-      <div className="title gradient-text font-medium text-[30px] ">Sub Hive</div>
+      <div className="title gradient-text font-medium text-[29px] ">Sub Hive</div>
 
       <div className="flex">
         {!user ? (
