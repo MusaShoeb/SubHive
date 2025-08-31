@@ -1,10 +1,19 @@
 @import "tailwindcss";
 
 :root {
-  --dark-maroon: #79410C;
-  --burnt-orange: #BA7425;
+ 
   --honey: #F0D88C;
+  --saffron: #e8c34a;
+  --gold: #e3b726;
+  --dark-golden: #a28115;
+
+  --burnt-orange: #BA7425;
+  --deep-red: #8f0000;
+  --dark-maroon: #79410C;
+  
+  --cambridge-blue: #81c5a8;
   --lake-green: #57B28C;
+  --jungle-green: #4da880;
   --forest-green: #3A7E61;
 
   --background-gradient: linear-gradient(90deg, var(--dark-maroon), var(--burnt-orange));

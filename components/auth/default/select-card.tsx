@@ -21,9 +21,9 @@ export default function SelectCard (
 ) {
 
    const lineVariants = {
-    initial: {width: 0},
-    hover: {width: 300},
-    clicked: {width: 300}
+    initial: {scaleX: 0},
+    hover: {scaleX: 75},
+    clicked: {scaleX: 75}
 }
 
    return (
