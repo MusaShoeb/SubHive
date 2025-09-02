@@ -3,6 +3,10 @@ export const iconImages = {
     src: "/school-icon-red.png",
     alt: "A red icon of a school building"
   },
+  schoolGreen: {
+    src: "/school-icon-green.png",
+    alt: "A green icon of a school building"
+  },
   teacherWhite: {
     src: "/teacher-icon-white.png",
     alt: "a white icon of a teacher next to a board"
@@ -54,5 +58,13 @@ export const iconImages = {
   fileIconRed: {
     src: "/file-red.png",
    alt: "Red file icon"
+  },
+  createSchoolRed: {
+    src: "/create-school-red.png",
+   alt: "Red icon of student next to a large document"
+  },
+  checkRed: {
+    src: "/check-red.png",
+   alt: "Red icon of a check mark"
   }
 };

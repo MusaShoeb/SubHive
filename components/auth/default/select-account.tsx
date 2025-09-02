@@ -45,7 +45,7 @@ export default function SelectAccount({switchState} : {switchState: (newState :s
             className = "group rounded-xl border-2 border-[var(--dark-maroon)] flex justify-center items-center w-[200px] h-[50px] p-[5px] mt-20">
                 <div 
                     className="text-[var(--burnt-orange)] group-hover:text-white text-[20px]"
-                    onClick={() => switchState(selection)}>Create Account</div>
+                    onClick={() => switchState(selection)}>Create Profile</div>
           </motion.button>
            <div className="flex flex-col items-center">
             <div className="flex flex-row m-10 text-[19px]">

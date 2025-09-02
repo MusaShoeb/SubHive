@@ -2,8 +2,13 @@
 
 import { iconImages } from "@/data/icons";
 import Image from "next/image";
-import { useState } from "react";
 import { motion } from 'motion/react'
+import { schoolProfileStore } from "@/zustand/school-profile";
+import { useState, useEffect } from "react";
+import { User } from "@supabase/supabase-js";
+import { supabase } from "@/supabase/client-supabase";
+import Avatar from "./upload-avatar";
+import { useRouter } from "next/navigation";
 
 type BuildSchoolProfileProps = {
     onNext: () => void
@@ -12,46 +17,58 @@ type BuildSchoolProfileProps = {
 
 export default function BuildSchoolProfile({onNext, onPrev} : BuildSchoolProfileProps) {
 
-  const [schoolName, setSchoolName] = useState("");
-  const [schoolLogo, setSchoolLogo] = useState<File | null>(null);
-  const [additionalPhotos, setAdditionalPhotos] = useState<File[]>([]);
-  const [schoolLinks, setSchoolLinks] = useState("");
-  const [location, setLocation] = useState("");
-  const [rate, setRate] = useState("");
+  const [avatar_url, setAvatarUrl] = useState<string | null>(null)
 
-  type FormFieldProps = {
-    label: string;
-    type: string;
-    id: string;
-    placeholder?: string;
-    value?: string;
-    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  };
+  const gradeLevel = schoolProfileStore((state) => state.gradeLevel);
+  const setGradeLevel = schoolProfileStore((state) => state.updateGradeLevel);
 
-  function FormField({
-    label,
-    type,
-    id,
-    placeholder,
-    value,
-    onChange,
-  }: FormFieldProps) {
-    return (
-      <div className="flex flex-col col-span-1">
-        <label htmlFor={id} className="font-semibold mb-1">
-          {label}
-        </label>
-        <input
-          id={id}
-          type={type}
-          value={type === "file" ? undefined : value}
-          placeholder={placeholder}
-          onChange={onChange}
-          className="w-full rounded-lg border px-3 py-2"
-        />
-      </div>
-    );
+  const schoolLinks = schoolProfileStore((state) => state.schoolLinks);
+  const setSchoolLinks = schoolProfileStore((state) => state.updateSchoolLinks);
+
+  const schoolLocation = schoolProfileStore((state) => state.schoolLocation);
+  const setSchoolLocation = schoolProfileStore((state) => state.updateSchoolLocation);
+
+  const hourlyRate = schoolProfileStore((state) => state.hourlyRate);
+  const setHourlyRate = schoolProfileStore((state) => state.updateHourlyRate);
+
+  const [user, setUser] = useState<User | null>(null);
+  const [error, setError] = useState('')
+
+  const [saving, setSaving] = useState(false)
+
+  const checkUser = async () => {
+        const { data, error } = await supabase.auth.getUser()
+        if (data?.user) {
+          setUser(data.user)
+        } else {
+          setUser(null)
+        }
+      }
+  
+  const updateSchoolProfile = async() => {
+
+        setSaving(true)
+            const { error } = await supabase.from('school_profiles').upsert({
+                id: user?.id as string,
+                avatar_url: avatar_url,
+                hourly_rate: hourlyRate,
+                location: schoolLocation,
+                grade_level: gradeLevel,
+                school_link: schoolLinks,
+                updated_at: new Date().toISOString(),
+            })
+         if (error) {
+        setError(`${error.message}`)
+    
   }
+      setSaving(false)
+    }
+   
+
+    useEffect(() => {
+     
+      checkUser()
+    }, [])
 
   return (
     <div className="flex justify-center items-center h-[80vh]">
@@ -63,89 +80,95 @@ export default function BuildSchoolProfile({onNext, onPrev} : BuildSchoolProfile
           <Image
             src={iconImages.schoolRed.src}
             alt={iconImages.schoolRed.alt}
-            width={75}
-            height={75}
+            width={70}
+            height={70}
           />
-           <motion.h1 className="font-medium text-[29px] text-[var(--dark-maroon)] my-4" 
+           <motion.h1 className="font-medium text-[25px] text-[var(--dark-maroon)] my-4" 
                            initial = {{opacity: 0, x: 5}} 
                            animate = {{opacity: 100, x: -5}}
                            transition={{duration: 2}}>
                  Build Your Profile.
             </motion.h1>
 
-          <form className="grid grid-cols-2 gap-6 w-full mt-8">
-            <FormField
-              label="School Name"
-              id="schoolName"
-              value={schoolName}
-              placeholder="Enter your school name"
-              type="text"
-              onChange={(e) => setSchoolName(e.target.value)}
+          <Avatar
+                uid={user?.id ?? null}
+                url={avatar_url}
+                size={150}
+                onUpload={(url) => {
+                    setAvatarUrl(url)
+                }}
             />
 
-            <div className="flex flex-col col-span-1">
-              <label htmlFor="schoolLogo" className="font-semibold mb-1">
-                School Logo
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-5">
+          
+        
+          <div className='flex-1 flex flex-col'>
+              <label htmlFor = "schoolLinks" className='font-semibold mb-1'>
+              Website
               </label>
               <input
-                id="schoolLogo"
-                type="file"
-                onChange={(e) => {
-                  if (e.target.files && e.target.files[0]) {
-                    setSchoolLogo(e.target.files[0]);
-                  }
-                }}
-                className="w-full rounded-lg border px-3 py-2"
-              />
-            </div>
+               id = "schoolLinks"
+               type = "text"
+               value= {schoolLinks}
+               placeholder= "Enter your school website or other"
+               onChange={(e) => (setSchoolLinks(e.currentTarget.value))}
+               className='w-100 rounded-lg border px-3 py-2 mb-1'
+             ></input>
+         </div>
 
-            <FormField
-              label="Rate"
-              id="rate"
-              value={rate}
-              placeholder="Enter hourly or daily rate"
-              type="text"
-              onChange={(e) => setRate(e.target.value)}
-            />
-
-            <div className="flex flex-col col-span-1">
-              <label
-                htmlFor="additionalPhotos"
-                className="font-semibold mb-1"
-              >
-                Additional School Photos
+          <div className='flex-1 flex flex-col'>
+              <label htmlFor = "rate" className='font-semibold mb-1'>
+              Hourly Rate
               </label>
               <input
-                id="additionalPhotos"
-                type="file"
-                multiple
-                onChange={(e) => {
-                  if (e.target.files) {
-                    setAdditionalPhotos(Array.from(e.target.files));
-                  }
-                }}
-                className="w-full rounded-lg border px-3 py-2"
-              />
-            </div>
+               id = "rate"
+               type = "text"
+               value= {hourlyRate}
+               placeholder= "Enter your hourly rate ex: $19/hr"
+               onChange={(e) => (setHourlyRate(e.currentTarget.value))}
+               className='w-100 rounded-lg border px-3 py-2 mb-1'
+             ></input>
+         </div>
 
-            <FormField
-              label="School Links"
-              id="schoolLinks"
-              value={schoolLinks}
-              placeholder="Enter any school links"
-              type="text"
-              onChange={(e) => setSchoolLinks(e.target.value)}
-            />
+          <div className='flex-1 flex flex-col'>
+              <label htmlFor = "location" className='font-semibold mb-1'>
+               Location
+              </label>
+              <input
+               id = "location"
+               type = "text"
+               value= {schoolLocation}
+               placeholder= "Enter your city ex: Dallas, Texas"
+               onChange={(e) => (setSchoolLocation(e.currentTarget.value))}
+               className='w-100 rounded-lg border px-3 py-2 mb-1'
+             ></input>
+         </div>
 
-            <FormField
-              label="Location"
-              id="location"
-              value={location}
-              placeholder="Enter the city of your school"
-              type="text"
-              onChange={(e) => setLocation(e.target.value)}
-            />
-          </form>
+          <div className='flex-1 flex flex-col'>
+              <label htmlFor = "gradeLevel" className='font-semibold mb-1'>
+              Grade Level
+              </label>
+              <input
+               id = "gradeLevel"
+               type = "text"
+               value= {gradeLevel}
+               placeholder= "Enter the range of grades taught ex: K-8"
+               onChange={(e) => (setGradeLevel(e.currentTarget.value))}
+               className='w-100 rounded-lg border px-3 py-2 mb-1'
+             ></input>
+         </div>
+        </div>
+          <motion.button
+            whileHover={{backgroundColor: "var(--dark-maroon)"}}
+            transition={{duration: .8}}
+            className = "group rounded-xl border-2 border-[var(--dark-maroon)] flex justify-center items-center w-[180px] h-[50px] p-[5px] mt-10">
+                <div 
+                    className="text-[var(--dark-maroon)] group-hover:text-white text-[20px]"
+                    onClick={() => {updateSchoolProfile()}}>{!saving ? "Save Changes" : "Saving..."}</div>
+          </motion.button>
+            <div className='text-[var(--deep-red)] text-md mt-3'>
+              {error}
+          </div>
         </div>
       </div>
      <motion.button className = "mx-5" onClick={onNext} whileHover={{y: -2, scale: 1.2}}>
