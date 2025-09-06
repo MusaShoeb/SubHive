@@ -75,7 +75,7 @@ export default function BuildSchoolProfile({onNext, onPrev} : BuildSchoolProfile
       <motion.button className = "mx-5" onClick={onPrev} whileHover={{y: -2, scale: 1.2}}>
          <Image src = {iconImages.leftArrowRed.src} alt = {iconImages.leftArrowRed.alt} width={40} height={40}/>
       </motion.button>
-      <div className="flex flex-col w-[900px] bg-white opacity-90 rounded-lg border-3 border-[var(--dark-maroon)] p-8 shadow-lg">
+      <div className="flex flex-col mt-40 md:mt-0 w-[65vw] bg-white opacity-90 rounded-lg border-3 border-[var(--dark-maroon)] p-8 shadow-lg">
         <div className="flex flex-col w-full h-full items-center">
           <Image
             src={iconImages.schoolRed.src}
@@ -83,7 +83,7 @@ export default function BuildSchoolProfile({onNext, onPrev} : BuildSchoolProfile
             width={70}
             height={70}
           />
-           <motion.h1 className="font-medium text-[25px] text-[var(--dark-maroon)] my-4" 
+           <motion.h1 className="font-medium text-[25px] text-[var(--dark-maroon)] my-3" 
                            initial = {{opacity: 0, x: 5}} 
                            animate = {{opacity: 100, x: -5}}
                            transition={{duration: 2}}>
@@ -112,7 +112,7 @@ export default function BuildSchoolProfile({onNext, onPrev} : BuildSchoolProfile
                value= {schoolLinks}
                placeholder= "Enter your school website or other"
                onChange={(e) => (setSchoolLinks(e.currentTarget.value))}
-               className='w-100 rounded-lg border px-3 py-2 mb-1'
+               className='w-[50vw] md:w-[28vw] rounded-lg border px-3 py-2 mb-1'
              ></input>
          </div>
 
@@ -126,7 +126,7 @@ export default function BuildSchoolProfile({onNext, onPrev} : BuildSchoolProfile
                value= {hourlyRate}
                placeholder= "Enter your hourly rate ex: $19/hr"
                onChange={(e) => (setHourlyRate(e.currentTarget.value))}
-               className='w-100 rounded-lg border px-3 py-2 mb-1'
+               className='w-[50vw] md:w-[28vw] rounded-lg border px-3 py-2 mb-1'
              ></input>
          </div>
 
@@ -140,7 +140,7 @@ export default function BuildSchoolProfile({onNext, onPrev} : BuildSchoolProfile
                value= {schoolLocation}
                placeholder= "Enter your city ex: Dallas, Texas"
                onChange={(e) => (setSchoolLocation(e.currentTarget.value))}
-               className='w-100 rounded-lg border px-3 py-2 mb-1'
+               className='w-[50vw] md:w-[28vw] rounded-lg border px-3 py-2 mb-1'
              ></input>
          </div>
 
@@ -154,7 +154,7 @@ export default function BuildSchoolProfile({onNext, onPrev} : BuildSchoolProfile
                value= {gradeLevel}
                placeholder= "Enter the range of grades taught ex: K-8"
                onChange={(e) => (setGradeLevel(e.currentTarget.value))}
-               className='w-100 rounded-lg border px-3 py-2 mb-1'
+               className='w-[50vw] md:w-[28vw] rounded-lg border px-3 py-2 '
              ></input>
          </div>
         </div>

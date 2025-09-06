@@ -50,7 +50,7 @@ export default function SelectAccount({switchState} : {switchState: (newState :s
            <div className="flex flex-col items-center">
             <div className="flex flex-row m-10 text-[19px]">
               <div className="mx-2"> Already Have an Account? </div>
-              <div className="gradient-text font-medium hover:brightness-125">Login Here</div>
+              <div className="gradient-text font-medium hover:brightness-125" onClick={() => {switchState("login")}}>Login Here</div>
             </div>
           </div>
         </div>

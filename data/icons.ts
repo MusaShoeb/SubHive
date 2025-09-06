@@ -27,6 +27,18 @@ export const iconImages = {
     src: "/pattern.png",
     alt: "a white geometric icon"
   },
+ availabilityWhite: {
+   src: "/availability-calendar-white.png",
+   alt: "White icon of a stop-watch that reads '24-7'"
+  },
+scheduleWhite: {
+   src: "/schedule-white.png",
+   alt: "White icon of a calendar"
+  },
+  clockWhite: {
+   src: "/clock-white.png",
+   alt: "White icon of a clock"
+  },
  userIconYellow: {
     src: "/user-icon-yellow.png",
     alt: "a yellow user icon"

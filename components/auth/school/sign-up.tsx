@@ -71,7 +71,7 @@ export default function SchoolSignUp ({onPrev, onNext}: schoolSignUpProps) {
                       whileHover={{y: !prevDisabled?  -2: 0,  scale: !prevDisabled? 1.2: 1}}>
          <Image src = {iconImages.leftArrowRed.src} alt = {iconImages.leftArrowRed.alt} width={40} height={40}/>
       </motion.button>
-      <div className="flex flex-col w-[900px] bg-white opacity-90 rounded-lg border-3 border-[var(--dark-maroon)] p-8 shadow-lg">
+      <div className="flex flex-col w-[65vw] bg-white opacity-90 rounded-lg border-3 border-[var(--dark-maroon)] p-8 shadow-lg">
         <div className="flex flex-col w-full h-full items-center">
           <motion.img
             loading='lazy'
@@ -99,9 +99,9 @@ export default function SchoolSignUp ({onPrev, onNext}: schoolSignUpProps) {
               <input
                type = "text"
                value={schoolName}
-               placeholder='Enter the name of your school or organization'
+               placeholder='Enter the name of your school'
                onChange={(e) => (setSchoolName(e.currentTarget.value))}
-               className='w-100 rounded-lg border border-[var(--dark-maroon)] px-3 py-2 mb-2'
+               className='w-[50vw] md:w-100 rounded-lg border border-[var(--dark-maroon)] px-3 py-2 mb-2'
              ></input>
             </div>
 
@@ -112,9 +112,9 @@ export default function SchoolSignUp ({onPrev, onNext}: schoolSignUpProps) {
               <input
                type = "text"
                value={email}
-               placeholder='Enter the email of your school or organization'
+               placeholder='Enter the email of your school'
                onChange={(e) => (setEmail(e.currentTarget.value))}
-               className='w-100 rounded-lg border border-[var(--dark-maroon)] px-3 py-2 mb-2'
+               className='w-[50vw] md:w-100 rounded-lg border border-[var(--dark-maroon)] px-3 py-2 mb-2'
              ></input>
             </div>
 
@@ -127,7 +127,7 @@ export default function SchoolSignUp ({onPrev, onNext}: schoolSignUpProps) {
                value={password}
                placeholder='Enter a strong password'
                onChange={(e) => (setPassword(e.currentTarget.value))}
-               className='w-100 rounded-lg border border-[var(--dark-maroon)] px-3 py-2'
+               className='w-[50vw] md:w-100 rounded-lg border border-[var(--dark-maroon)] px-3 py-2'
              ></input>
             </div>
 
