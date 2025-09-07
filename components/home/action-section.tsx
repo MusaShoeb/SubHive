@@ -1,14 +1,18 @@
 
 import { motion, easeInOut} from 'motion/react'
 import Image from 'next/image'
-import { ActionCards, ActionCardSchool } from './action-cards'
+import  { ActionCards, ActionCardSchool } from './action-cards'
 import { iconImages } from '@/data/icons'
+import { isMobileStore } from '@/zustand/mobile-view'
 
 export default function ActionSection () {
+
+    const isMobile = isMobileStore((state) => state.isMobile)
+
     return (
         <div className="min-h-[80vh] mt-15 ">
-        <h2 className="title flex items-center text-center justify-center gradient-text text-[45px] font-medium"> Browse through the sub list. <br></br> Send your first contact. </h2>
-        <div className="flex justify-between items-center mx-25 my-10">
+        <h2 className="title flex items-center text-center justify-center mx-2 gradient-text text-[45px] font-medium"> Browse through the sub list. <br></br> Send your first contact. </h2>
+        <div className="flex justify-evenly items-center mx-10 mt-10 mb-15 md:mx-25">
             <div className='action-card list'>
         <ActionCards
             cardColor= {"var(--honey)"}
@@ -29,10 +33,12 @@ export default function ActionSection () {
             imageAlt= {iconImages.userIconRed.alt}
         ></ActionCards>
             </div>
-            <div className='hidden md:flex'>
-            <ActionCardSchool></ActionCardSchool>
-            </div>
-         
+         {
+          !isMobile && 
+          <div className='flex'>
+             <ActionCardSchool></ActionCardSchool>
+          </div>
+        }
         </div>
     </div>
     )

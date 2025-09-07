@@ -6,10 +6,10 @@ import { motion } from 'motion/react'
 export default function HeroSection() {
   return (
     <div className="flex min-h-screen flex-col items-center mt-15">
-      <div className="flex h-auto w-9/10 flex-col rounded-lg border-4  border-[var(--dark-maroon)] bg-white opacity-80 md:h-200 md:w-300">
+      <div className="flex h-auto w-9/10 flex-col rounded-lg border-4  border-[var(--dark-maroon)] opacity-90 bg-white md:h-200 md:w-300">
         <motion.div
           className="flex flex-3 flex-col items-center justify-center border-b-4 border-[var(--dark-maroon)] text-center font text-[40px] text-white md:text-[60px]"
-          animate={{ backgroundColor: "var(--burnt-orange)" }}
+          animate={{ backgroundColor: "var(--burnt-orange)"}}
           transition={{ backgroundColor: { duration: 0.7 } }}
         >
           <h1 className="title mt-2 m-1">

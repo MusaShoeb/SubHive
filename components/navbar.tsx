@@ -7,11 +7,15 @@ import { useEffect, useState } from "react"
 import { motion } from "motion/react"
 import { userStore } from "@/zustand/current-user"
 import { useRouter } from "next/navigation"
+import { isMobileStore } from "@/zustand/mobile-view"
 
 export default function NavBar() {
 
   const userGlobal = userStore(state => state.user)
   const setUserGlobal = userStore(state => state.updateUser)
+
+  const MobileGlobal = isMobileStore(state => state.isMobile)
+  const setMobileGlobal = isMobileStore(state => state.updateIsMobile)
  
   const checkUser = async () => {
       const { data, error } = await supabase.auth.getUser()
@@ -36,8 +40,16 @@ export default function NavBar() {
       }
     )
 
+    const checkMobile = () => {
+      setMobileGlobal(window.innerWidth < 768);
+      console.log(`isMobile from Navbar: ${MobileGlobal}`);
+    }
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+
     return () => {
-      subscription?.subscription.unsubscribe()
+      subscription?.subscription.unsubscribe();
+      window.removeEventListener("resize", checkMobile);
     }
   }, [])
 
@@ -50,9 +62,6 @@ export default function NavBar() {
 
   const [activeTab, setActiveTab] = useState("home");
 
-  const switchActiveTab = (tabToSwitch: string) => {
-    setActiveTab(tabToSwitch);
-  };
 
   return (
     <div className={`flex items-center m-5 justify-between`}>
