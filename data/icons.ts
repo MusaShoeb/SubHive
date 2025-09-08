@@ -78,5 +78,13 @@ scheduleWhite: {
   checkRed: {
     src: "/check-red.png",
    alt: "Red icon of a check mark"
-  }
+  },
+   hamburgerRed: {
+   src: "/hamburger-menu.png",
+   alt: "Red icon of a hamburger-bar icon for a navigation bar"
+  },
+  closeOrange: {
+   src: "/close.png",
+   alt: "Orange icon of an 'X' to close the menu"
+  },
 };

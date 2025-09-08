@@ -35,6 +35,6 @@ export default function AuthPage() {
       }
   };
   return (
-    <div>{stateToComponent()}</div>
+    <div className="min-h-screen">{stateToComponent()}</div>
   )
 }

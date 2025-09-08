@@ -19,13 +19,10 @@ export default function SchoolHandler ({switchState} : SchoolHandlerProps) {
     const prevStep = () => { (step === MIN_STEPS) ? switchState("default") : setStep((prev) => (prev - 1)) }
 
     return (
-        <div className="flex flex-col">
+        <div className="flex flex-col h-[100vh] md:h-auto">
             {(step === 1) && <SchoolSignUp onPrev = {prevStep} onNext={nextStep}/> }
             {(step === 2) && <BuildSchoolProfile onPrev = {prevStep} onNext={nextStep}/> }
             {(step === 3) && <SetSchoolPreferences onPrev = {prevStep} onNext={nextStep}/> }
-            <div className="w-full flex justify-center mt-4 text-[20px] font-medium text-[var(--dark-maroon)]">
-                {`${step} / ${MAX_STEPS}`}
-            </div>
         </div>
         
     )
