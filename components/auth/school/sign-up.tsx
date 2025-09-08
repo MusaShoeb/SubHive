@@ -74,7 +74,7 @@ export default function SchoolSignUp({ onPrev, onNext}: schoolSignUpProps) {
         />
       </motion.button>
 
-      <div className="flex w-[65vw] flex-col rounded-lg border-3 border-[var(--dark-maroon)] bg-white p-8 opacity-90 shadow-lg">
+      <div className="flex w-[65vw] mb-5 flex-col rounded-lg border-3 border-[var(--dark-maroon)] bg-white p-8 opacity-90 shadow-lg">
         <div className="flex h-full w-full flex-col items-center">
           <motion.img
             loading="lazy"
@@ -170,7 +170,7 @@ export default function SchoolSignUp({ onPrev, onNext}: schoolSignUpProps) {
       </div>
 
       <motion.button
-        className={`mx-5 ${nextDisabled ? "opacity-40" : "opacity-100"}`}
+        className={`mx-3 ${nextDisabled ? "opacity-40" : "opacity-100"} md:mx-5`}
         onClick={onNext}
         disabled={nextDisabled}
         whileHover={{ y: !nextDisabled ? -2 : 0, scale: !nextDisabled ? 1.2 : 1 }}

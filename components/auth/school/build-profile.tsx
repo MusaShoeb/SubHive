@@ -74,7 +74,7 @@ export default function BuildSchoolProfile({onNext, onPrev} : BuildSchoolProfile
     }, [])
 
   return (
-      <div className="flex h-auto items-center justify-center mt-5 md:mt-0">
+      <div className="flex h-auto items-center justify-center mt-5 mb-10 md:mt-0">
         <motion.button className = "mx-3 md:mx-5" onClick={onPrev} whileHover={{y: -2, scale: 1.2}}>
           <Image src = {iconImages.leftArrowRed.src} alt = {iconImages.leftArrowRed.alt} width={40} height={40}/>
         </motion.button>
@@ -83,8 +83,8 @@ export default function BuildSchoolProfile({onNext, onPrev} : BuildSchoolProfile
             <Image
               src={iconImages.schoolRed.src}
               alt={iconImages.schoolRed.alt}
-              width={60}
-              height={60}
+              width={isMobile? 60 : 80}
+              height={isMobile? 60 : 80}
             />
             <motion.h1 className="font-medium text-[25px] text-[var(--dark-maroon)] my-3" 
                             initial = {{opacity: 0, x: 5}} 

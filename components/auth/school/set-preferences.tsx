@@ -101,12 +101,12 @@ export default function SetSchoolPreferences ({onNext, onPrev} : SchoolPreferenc
 
 
     return (
-         <div className="flex justify-center items-center h-auto">
+         <div className="flex justify-center items-center">
             <motion.button className = "mx-3 md:mx-5" onClick={onPrev} whileHover={{y: -2, scale: 1.2}}>
               <Image src = {iconImages.leftArrowRed.src} alt = {iconImages.leftArrowRed.alt} width={40} height={40}/>
             </motion.button>
             <div className="flex flex-col w-[69vw] md:w-[900px] bg-white opacity-90 rounded-lg border-3 border-[var(--dark-maroon)] p-8 shadow-lg">
-              <div className="flex flex-col w-full h-full items-center">
+              <div className="flex flex-col w-full h-full items-center overflow-wrap">
                 <Image
                   src={iconImages.fileIconRed.src}
                   alt={iconImages.fileIconRed.alt}
@@ -119,6 +119,7 @@ export default function SetSchoolPreferences ({onNext, onPrev} : SchoolPreferenc
                            transition={{duration: 2}}>
                  Set your Preferences?
                 </motion.h1>
+
                 <div className= {`w-full flex justify-center`}>
                      {specificTags.map( (tag, index) => 
                         <motion.div 
@@ -127,34 +128,61 @@ export default function SetSchoolPreferences ({onNext, onPrev} : SchoolPreferenc
                                     scale: (selectedSpecificTags.includes(tag)) ? 1.1 : 1}
                                     }
                         onClick={() => toggleTag(tag, setSelectedSpecificTags)}
-                        className="flex items-center justify-center w-auto h-auto p-2 rounded-lg border-2 border-[var(--dark-golden)] text-[15px] mx-1 my-1">
+                        className="flex items-center justify-center w-[70px] md:w-auto h-auto p-2 rounded-lg border-2 border-[var(--dark-golden)] text-[15px] mx-2 my-1">
                             {tag}
                         </motion.div>)}
                 </div>
-                 <div className= {`w-full ${isMobile ? "grid grid-cols-3" : "flex justify-center "}`}>
-                     {subjectTags.map( (tag, index) => 
+
+                 <div className= "w-full flex justify-center">
+                     {subjectTags.slice(0,3).map( (tag, index) => 
                         <motion.div 
                         key = {index}
                         animate = {{backgroundColor: (selectedSubjectTags.includes(tag)) ? greenColors[index % 3] : "", 
                                     scale: (selectedSubjectTags.includes(tag)) ? 1.1 : 1}
                                     }
                         onClick={() => toggleTag(tag, setSelectedSubjectTags)}
-                        className="flex items-center justify-center w-auto h-auto p-2 rounded-lg border-2 border-[var(--forest-green)] text-[13px] md:text-[15px] mx-2 my-2">
+                         className="flex items-center justify-center w-[70px] md:w-auto h-auto p-2 rounded-lg border-2 border-[var(--forest-green)] text-[15px] mx-2 my-1">
                             {tag}
                         </motion.div>)}
                 </div>
-                 <div className= {`w-full ${isMobile ? "grid grid-cols-2" : "flex justify-center "}`}>
-                     {availabilityTags.map( (tag, index) => 
+                <div className= "w-full flex justify-center">
+                     {subjectTags.slice(-3).map( (tag, index) => 
+                        <motion.div 
+                        key = {index}
+                        animate = {{backgroundColor: (selectedSubjectTags.includes(tag)) ? greenColors[index % 3] : "", 
+                                    scale: (selectedSubjectTags.includes(tag)) ? 1.1 : 1}
+                                    }
+                        onClick={() => toggleTag(tag, setSelectedSubjectTags)}
+                         className="flex items-center justify-center w-[70px] md:w-auto h-auto p-2 rounded-lg border-2 border-[var(--forest-green)] text-[15px] mx-2 my-1">
+                            {tag}
+                        </motion.div>)}
+                </div>
+
+                  <div className= "w-full flex justify-center">
+                     {availabilityTags.slice(0,3).map( (tag, index) => 
                         <motion.div 
                         key = {index}
                          animate = {{backgroundColor: (selectedAvailabilityTags.includes(tag)) ? goldColors[index % 3] : "", 
                                     scale: (selectedAvailabilityTags.includes(tag)) ? 1.1 : 1}
                                     }
                         onClick={() => toggleTag(tag, setSelectedAvailabilityTags)}
-                        className="flex items-center justify-center w-auto h-auto p-2 rounded-lg border-2 border-[var(--dark-golden)] text-[11px] md:text-[15px] mx-2 my-1">
+                         className="flex items-center justify-center w-[70px] md:w-auto h-auto p-3 rounded-lg border-2 border-[var(--dark-golden)] text-[13px] md:text-[15px] mx-2 my-1">
                             {tag}
                         </motion.div>)}
                 </div>
+                 <div className= "w-full flex justify-center">
+                     {availabilityTags.slice(isMobile ? -3 : -4).map( (tag, index) => 
+                        <motion.div 
+                        key = {index}
+                         animate = {{backgroundColor: (selectedAvailabilityTags.includes(tag)) ? goldColors[index % 3] : "", 
+                                    scale: (selectedAvailabilityTags.includes(tag)) ? 1.1 : 1}
+                                    }
+                        onClick={() => toggleTag(tag, setSelectedAvailabilityTags)}
+                         className="flex items-center justify-center w-[70px] md:w-auto h-auto p-3 rounded-lg border-2 border-[var(--dark-golden)] text-[13px] md:text-[15px] mx-2 my-1">
+                            {tag}
+                        </motion.div>)}
+                </div>
+
                <motion.h2 className="font-medium text-[29px] text-[var(--dark-maroon)] my-4" 
                            initial = {{opacity: 0, x: 5}} 
                            animate = {{opacity: 100, x: -5}}
