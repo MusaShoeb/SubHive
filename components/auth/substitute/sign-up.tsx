@@ -2,31 +2,31 @@ import { motion } from 'motion/react'
 import Image from 'next/image'
 import { iconImages } from '@/data/icons'
 import { useEffect, useState } from 'react'
-import { createSchoolAccount } from '@/supabase/services-supabase'
-import { schoolProfileStore } from '@/zustand/school-profile'
 import { supabase } from '@/supabase/client-supabase'
 import { User } from '@supabase/supabase-js'
 import { userStore } from '@/zustand/current-user'
 import { isMobileStore } from '@/zustand/mobile-view'
+import { substituteProfileStore } from '@/zustand/substitute-profile'
 
-type schoolSignUpProps = {
+type substituteSignUpProps = {
   onPrev: () => void,
   onNext: () => void,
 }
 
-export default function SchoolSignUp({ onPrev, onNext}: schoolSignUpProps) {
+export default function SubstituteSignUp({ onPrev, onNext}: substituteSignUpProps) {
+
   const [nextDisabled, setNextDisabled] = useState(true)
   const [prevDisabled, setPrevDisabled] = useState(false)
   const [error, setError] = useState('')
 
-  const email = schoolProfileStore(state => state.email)
-  const setEmail = schoolProfileStore(state => state.updateEmail)
+  const email = substituteProfileStore(state => state.email)
+  const setEmail = substituteProfileStore(state => state.updateEmail)
 
-  const schoolName = schoolProfileStore(state => state.schoolName)
-  const setSchoolName = schoolProfileStore(state => state.updateSchoolName)
+  const substituteName = substituteProfileStore(state => state.substituteName)
+  const setSubstituteName = substituteProfileStore(state => state.updateSubstituteName)
 
-  const password = schoolProfileStore(state => state.password)
-  const setPassword = schoolProfileStore(state => state.updatePassword)
+  const password = substituteProfileStore(state => state.password)
+  const setPassword = substituteProfileStore(state => state.updatePassword)
 
   const userGlobal = userStore(state => state.user)
   const isMobile = isMobileStore(state => state.isMobile)
@@ -37,8 +37,8 @@ export default function SchoolSignUp({ onPrev, onNext}: schoolSignUpProps) {
       password: password,
       options: {
         data: {
-          'school_name': schoolName,
-          'account_type': "school"
+          'full_name': substituteName,
+          'account_type' : "sub"
         }
       }
     })
@@ -46,7 +46,7 @@ export default function SchoolSignUp({ onPrev, onNext}: schoolSignUpProps) {
     if (error) {
       setError(`${error}`)
     } else if (data) {
-      console.log(`Successful Account Creation for School: ${schoolName}`)
+      console.log(`Successful Account Creation for User: ${substituteName}`)
       setError('')
       setNextDisabled(false)
       setPrevDisabled(true)
@@ -68,19 +68,19 @@ export default function SchoolSignUp({ onPrev, onNext}: schoolSignUpProps) {
         whileHover={{ y: !prevDisabled ? -2 : 0, scale: !prevDisabled ? 1.2 : 1 }}
       >
         <Image
-          src={iconImages.leftArrowMaroon.src}
-          alt={iconImages.leftArrowMaroon.alt}
+          src={iconImages.leftArrowGreen.src}
+          alt={iconImages.leftArrowGreen.alt}
           width={40}
           height={40}
         />
       </motion.button>
 
-      <div className="flex w-[65vw] mb-5 flex-col rounded-lg border-3 border-[var(--dark-maroon)] bg-white p-8 opacity-90 shadow-lg">
+      <div className="flex w-[65vw] mb-5 flex-col rounded-lg border-3 border-[var(--jungle-green)] bg-white p-8 opacity-90 shadow-lg">
         <div className="flex h-full w-full flex-col items-center">
           <motion.img
             loading="lazy"
-            src={iconImages.createSchoolRed.src}
-            alt={iconImages.createSchoolRed.alt}
+            src={iconImages.createSubGreen.src}
+            alt={iconImages.createSubGreen.alt}
             width={75}
             height={75}
             initial={{ opacity: 0, x: 5 }}
@@ -88,7 +88,7 @@ export default function SchoolSignUp({ onPrev, onNext}: schoolSignUpProps) {
             transition={{ duration: 2 }}
           />
           <motion.h1
-            className="my-4 text-[29px] font-medium text-[var(--dark-maroon)]"
+            className="my-4 text-[29px] font-medium text-[var(--jungle-green)]"
             initial={{ opacity: 0, x: 5 }}
             animate={{ opacity: 100, x: -5 }}
             transition={{ duration: 2 }}
@@ -98,29 +98,29 @@ export default function SchoolSignUp({ onPrev, onNext}: schoolSignUpProps) {
 
           <div className="flex w-full flex-col items-center">
             <div className="flex flex-1 flex-col">
-              <label htmlFor="createSchoolName" className="mb-1 font-semibold">
+              <label htmlFor="createSubName" className="mb-1 font-semibold  text-[var(--jungle-green)]">
                 School Name
               </label>
               <input
-                id="createSchoolName"
+                id="createSubName"
                 type="text"
-                value={schoolName}
+                value={substituteName}
                 placeholder={
                   isMobile
                     ? 'Enter your school name'
                     : 'Enter the name of your school or organization'
                 }
-                onChange={(e) => setSchoolName(e.currentTarget.value)}
-                className="mb-2 w-[50vw] rounded-lg border border-[var(--dark-maroon)] px-3 py-2 md:w-100"
+                onChange={(e) => setSubstituteName(e.currentTarget.value)}
+                className="mb-2 w-[50vw] rounded-lg border border-[var(--jungle-green)] px-3 py-2 md:w-100"
               />
             </div>
 
             <div className="flex flex-1 flex-col">
-              <label htmlFor="createSchoolEmail" className="mb-1 font-semibold">
+              <label htmlFor="createSubEmail" className="mb-1 font-semibold  text-[var(--jungle-green)]">
                 Email
               </label>
               <input
-                id="createSchoolEmail"
+                id="createSubEmail"
                 type="text"
                 value={email}
                 placeholder={
@@ -129,34 +129,34 @@ export default function SchoolSignUp({ onPrev, onNext}: schoolSignUpProps) {
                     : 'Enter the email of your school or organization'
                 }
                 onChange={(e) => setEmail(e.currentTarget.value)}
-                className="mb-2 w-[50vw] rounded-lg border border-[var(--dark-maroon)] px-3 py-2 md:w-100"
+                className="mb-2 w-[50vw] rounded-lg border border-[var(--jungle-green)] px-3 py-2 md:w-100"
               />
             </div>
 
             <div className="flex flex-1 flex-col">
               <label
-                htmlFor="createSchoolPassword"
-                className="mb-1 mt-1 font-semibold"
+                htmlFor="createSubPassword"
+                className="mb-1 mt-1 font-semibold text-[var(--jungle-green)]"
               >
                 Password
               </label>
               <input
-                id="createSchoolPassword"
+                id="createSubPassword"
                 type="text"
                 value={password}
                 placeholder="Enter a strong password"
                 onChange={(e) => setPassword(e.currentTarget.value)}
-                className="w-[50vw] rounded-lg border border-[var(--dark-maroon)] px-3 py-2 md:w-100"
+                className="w-[50vw] rounded-lg border border-[var(--jungle-green)] px-3 py-2 md:w-100"
               />
             </div>
 
             <motion.button
-              whileHover={{ backgroundColor: "var(--dark-maroon)" }}
+              whileHover={{ backgroundColor: "var(--jungle-green)" }}
               transition={{ duration: 0.4 }}
-              className="group mt-10 flex h-[50px] w-[180px] items-center justify-center rounded-xl border-2 border-[var(--dark-maroon)] p-[5px]"
+              className="group mt-10 flex h-[50px] w-[180px] items-center justify-center rounded-xl border-2 border-[var(--jungle-green)] p-[5px]"
             >
               <div
-                className="text-[20px] text-[var(--dark-maroon)] group-hover:text-white"
+                className="text-[20px] text-[var(--jungle-green)] group-hover:text-white"
                 onClick={() => handleSignup()}
               >
                 Create Account
@@ -177,8 +177,8 @@ export default function SchoolSignUp({ onPrev, onNext}: schoolSignUpProps) {
         whileHover={{ y: !nextDisabled ? -2 : 0, scale: !nextDisabled ? 1.2 : 1 }}
       >
         <Image
-          src={iconImages.rightArrowMaroon.src}
-          alt={iconImages.rightArrowMaroon.alt}
+          src={iconImages.rightArrowGreen.src}
+          alt={iconImages.rightArrowGreen.alt}
           width={40}
           height={40}
         />

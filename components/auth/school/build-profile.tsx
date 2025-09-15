@@ -76,7 +76,7 @@ export default function BuildSchoolProfile({onNext, onPrev} : BuildSchoolProfile
   return (
       <div className="flex h-auto items-center justify-center mt-5 mb-10 md:mt-0">
         <motion.button className = "mx-3 md:mx-5" onClick={onPrev} whileHover={{y: -2, scale: 1.2}}>
-          <Image src = {iconImages.leftArrowRed.src} alt = {iconImages.leftArrowRed.alt} width={40} height={40}/>
+          <Image src = {iconImages.leftArrowMaroon.src} alt = {iconImages.leftArrowMaroon.alt} width={40} height={40}/>
         </motion.button>
         <div className="flex w-[65vw] flex-col rounded-lg border-3 border-[var(--dark-maroon)] bg-white p-8 opacity-90 shadow-lg">
           <div className="flex flex-col w-full h-full items-center">
@@ -97,6 +97,8 @@ export default function BuildSchoolProfile({onNext, onPrev} : BuildSchoolProfile
                   uid={user?.id ?? null}
                   url={avatar_url}
                   size={150}
+                  label="Upload School Logo"
+                  color = "var(--dark-maroon)"
                   onUpload={(url) => {
                       setAvatarUrl(url)
                   }}
@@ -175,7 +177,7 @@ export default function BuildSchoolProfile({onNext, onPrev} : BuildSchoolProfile
           </div>
         </div>
       <motion.button className = "mx-3 md:mx-5" onClick={onNext} whileHover={{y: -2, scale: 1.2}}>
-          <Image src = {iconImages.rightArrowRed.src} alt = {iconImages.rightArrowRed.alt} width={40} height={40}/>
+          <Image src = {iconImages.rightArrowMaroon.src} alt = {iconImages.rightArrowMaroon.alt} width={40} height={40}/>
       </motion.button>
       </div>
   );

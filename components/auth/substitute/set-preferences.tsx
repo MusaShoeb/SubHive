@@ -1,3 +1,4 @@
+
 import { iconImages } from "@/data/icons";
 import Image from "next/image";
 import { useState, useEffect, Dispatch, SetStateAction } from "react";
@@ -9,13 +10,12 @@ import { User } from "@supabase/supabase-js";
 import { useRouter } from "next/navigation";
 import { isMobileStore } from "@/zustand/mobile-view";
 
-type SchoolPreferencesNavProps = {
+type SubstitutePreferencesNavProps = {
     onNext: () => void
     onPrev: () => void
 }
 
-export default function SetSchoolPreferences ({onNext, onPrev} : SchoolPreferencesNavProps) {
-
+export default function SetSubstitutePreferences ({onNext, onPrev} : SubstitutePreferencesNavProps) {
 
     const router = useRouter()
     const isMobile = isMobileStore(state => state.isMobile)
@@ -103,17 +103,17 @@ export default function SetSchoolPreferences ({onNext, onPrev} : SchoolPreferenc
     return (
          <div className="flex justify-center items-center">
             <motion.button className = "mx-3 md:mx-5" onClick={onPrev} whileHover={{y: -2, scale: 1.2}}>
-              <Image src = {iconImages.leftArrowMaroon.src} alt = {iconImages.leftArrowMaroon.alt} width={40} height={40}/>
+              <Image src = {iconImages.leftArrowGreen.src} alt = {iconImages.leftArrowMaroon.alt} width={40} height={40}/>
             </motion.button>
-            <div className="flex flex-col w-[69vw] md:w-[900px] bg-white opacity-90 rounded-lg border-3 border-[var(--dark-maroon)] p-8 shadow-lg">
+            <div className="flex flex-col w-[69vw] md:w-[900px] bg-white opacity-90 rounded-lg border-3 border-[var(--lake-green)] p-8 shadow-lg">
               <div className="flex flex-col w-full h-full items-center overflow-wrap">
                 <Image
-                  src={iconImages.fileIconRed.src}
-                  alt={iconImages.fileIconRed.alt}
+                  src={iconImages.preferenceGreen.src}
+                  alt={iconImages.preferenceGreen.alt}
                   width={65}
                   height={65}
                 />
-                <motion.h1 className="font-medium text-[29px] text-[var(--dark-maroon)] my-4" 
+                <motion.h1 className="font-medium text-[29px] text-[var(--lake-green)] my-4" 
                            initial = {{opacity: 0, x: 5}} 
                            animate = {{opacity: 100, x: -5}}
                            transition={{duration: 2}}>
@@ -183,14 +183,14 @@ export default function SetSchoolPreferences ({onNext, onPrev} : SchoolPreferenc
                         </motion.div>)}
                 </div>
 
-               <motion.h2 className="font-medium text-[29px] text-[var(--dark-maroon)] my-4" 
+               <motion.h2 className="font-medium text-[29px] text-[var(--lake-green)] my-4" 
                            initial = {{opacity: 0, x: 5}} 
                            animate = {{opacity: 100, x: -5}}
                            transition={{duration: 2}}>
                  Include a Bio?
                 </motion.h2>
                 <textarea
-                    className="flex w-[50vw] h-40 p-5 rounded-lg border-2 border-[var(--dark-maroon)] placeholder:text-center"
+                    className="flex w-[50vw] h-40 p-5 rounded-lg border-2 border-[var(--lake-green)] placeholder:text-center"
                     placeholder="Describe the traits and values you seek in a substitute teacher"
                     value = {bio}
                     onChange={(e) => e.target.value.length <= MAX_CHAR_COUNT ? setBio(e.target.value) : e}
@@ -200,7 +200,7 @@ export default function SetSchoolPreferences ({onNext, onPrev} : SchoolPreferenc
             </div>
            
             <motion.button className = "mx-3 md:mx-5" onClick={handleSaveChanges} whileHover={{y: -2, scale: 1.2}}>
-              <Image src = {iconImages.checkRed.src} alt = {iconImages.checkRed.alt} width={45} height={45}/>
+              <Image src = {iconImages.checkGreen.src} alt = {iconImages.checkGreen.alt} width={45} height={45}/>
             </motion.button>
           </div>
          

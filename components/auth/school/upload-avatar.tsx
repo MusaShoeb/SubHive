@@ -8,10 +8,14 @@ export default function Avatar({
   url,
   size,
   onUpload,
+  color,
+  label
 }: {
   uid: string | null
   url: string | null
   size: number
+  color: string
+  label: string
   onUpload: (url: string) => void
 }) {
   
@@ -71,14 +75,14 @@ export default function Avatar({
           src={avatarUrl}
           alt="Avatar"
           className="avatar image"
-          style={{ height: size, width: size }}
+          style={{ height: size, width: size}}
         />
       ) : (
-        <div className="avatar no-image rounded-lg border-2 border-[var(--dark-maroon)] " style={{ height: size, width: size }} />
+        <div className="avatar no-image rounded-lg border-2 " style={{ height: size, width: size, borderColor: color}} />
       )}
       <div style={{ width: size }} className='flex items-center'>
-        <label className="button primary block font-semibold mb-2" htmlFor="single">
-          {uploading ? 'Uploading ...' : 'Upload Logo'}
+        <label className="button primary block text-[15px] font-semibold mb-2" htmlFor="single">
+          {uploading ? 'Uploading ...' : label}
         </label>
         <input
           style={{

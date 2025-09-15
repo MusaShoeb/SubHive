@@ -3,6 +3,7 @@
 import SelectAccount from "@/components/auth/default/select-account";
 import LoginPage from "@/components/auth/login/login";
 import SchoolHandler from "@/components/auth/school/school-handler";
+import SubstituteHandler from "@/components/auth/substitute/substitute-handler";
 
 import { useState } from "react";
 
@@ -26,7 +27,7 @@ export default function AuthPage() {
         case authStates.school:
           return <SchoolHandler switchState={handleStateSwitch}/>
         case authStates.substitute:
-          return <SelectAccount switchState={handleStateSwitch}/>
+          return <SubstituteHandler switchState={handleStateSwitch}/>
         case authStates.login:
           return <LoginPage></LoginPage>
         case authStates.default:

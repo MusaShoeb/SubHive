@@ -51,25 +51,37 @@ scheduleWhite: {
     src: "/user-icon-red.png",
     alt: "a red user icon"
   },
-  leftArrow: {
-   src: "/left.png",
-   alt: "Black left arrow icon"
+  leftArrowGreen: {
+   src: "/left-green.png",
+   alt: "Green left arrow icon"
   },
-  leftArrowRed: {
-   src: "/left-red.png",
-   alt: "Red left arrow icon"
+  leftArrowGold: {
+   src: "/left-gold.png",
+   alt: "Gold left arrow icon"
   },
-  rightArrow: {
-   src: "/right.png",
-   alt: "Black right arrow icon"
+  leftArrowMaroon: {
+   src: "/left-maroon.png",
+   alt: "Maroon left arrow icon"
   },
-  rightArrowRed: {
-   src: "/right-red.png",
-   alt: "Red right arrow icon"
+  rightArrowGreen: {
+   src: "/right-green.png",
+   alt: "Green right arrow icon"
+  },
+  rightArrowGold: {
+   src: "/right-gold.png",
+   alt: "Gold right arrow icon"
+  },
+  rightArrowMaroon: {
+   src: "/right-maroon.png",
+   alt: "Maroon right arrow icon"
   },
   fileIconRed: {
     src: "/file-red.png",
    alt: "Red file icon"
+  },
+   preferenceGreen: {
+    src: "/preference-green.png",
+   alt: "Green icon of a thumbs up and thumbs down"
   },
   createSchoolRed: {
     src: "/create-school-red.png",
@@ -79,6 +91,10 @@ scheduleWhite: {
     src: "/check-red.png",
    alt: "Red icon of a check mark"
   },
+  checkGreen: {
+    src: "/check-green.png",
+   alt: "Green icon of a check mark"
+  },
    hamburgerRed: {
    src: "/hamburger-menu.png",
    alt: "Red icon of a hamburger-bar icon for a navigation bar"
@@ -87,4 +103,22 @@ scheduleWhite: {
    src: "/close.png",
    alt: "Orange icon of an 'X' to close the menu"
   },
+ createSubGreen: {
+   src: "/create-sub-green.png",
+   alt: "Green icon of a graduation cap atop a stack of books"
+  },
+ createSubGold: {
+   src: "/create-sub-gold.png",
+   alt: "Gold icon representing a create profile "
+  },
+ buildSubGreen: {
+   src: "/build-sub-green.png",
+   alt: "Green icon of checklist and pen"
+  },
+  buildSubGold: {
+   src: "/build-sub-gold.png",
+   alt: "Gold Icon of users connected through a network"
+  },
+
+  
 };
